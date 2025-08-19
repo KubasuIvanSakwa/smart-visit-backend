@@ -9,7 +9,7 @@ SECRET_KEY = 'django-insecure-#pqr&16mjrz8!8l$f#fbf*2fgnvzaxzg+*li@f%2=u4+ohqti%
 
 DEBUG = True
 
-ALLOWED_HOSTS: List[str] = []
+ALLOWED_HOSTS: List[str] = ["*"]
 
 # Custom user model
 AUTH_USER_MODEL = 'visitors.CustomUser'
