@@ -226,9 +226,15 @@ class UserListView(ListAPIView):
     """
     Returns a list of all registered users
     """
-    queryset = User.objects.all()
     serializer_class = UserListSerializer
     permission_classes = [AllowAny]  
+    
+    def get_queryset(self):
+        # Filter users by role if 'role' query parameter is provided
+        role = self.request.query_params.get('role')
+        if role:
+            return User.objects.filter(role=role)
+        return User.objects.all()
 
 class UserProfileView(APIView):
     authentication_classes = [JWTAuthentication]
